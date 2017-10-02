@@ -9,10 +9,11 @@ from base64 import b64decode
 from datetime import timedelta
 from datetime import tzinfo
 from iso8601utils import parsers
+from string import Template
 
 logging.basicConfig(level=logging.INFO)
 
-URL = 'https://www.performance.service.gov.uk/data/govuk-pay/payments'
+URL = Template('https://www.performance.service.gov.uk/data/govuk-pay/$context')
 
 
 class SimpleUtc(tzinfo):
@@ -64,7 +65,7 @@ def generate_payload(
             }]
 
 
-def lambda_handler(event, context):
+def lambda_handler(event, context='payments'):
 
     dataset_bearer_token = os.getenv('DATASET_BEARER_TOKEN', '')
     sumo_access_id = os.getenv('SUMO_ACCESS_ID', '')
@@ -102,7 +103,7 @@ def lambda_handler(event, context):
         sumo.average_amount_paid())
 
     print payload
-    resp = requests.post(URL, json=payload, headers=headers)
+    resp = requests.post(URL.substitute(context=context), json=payload, headers=headers)
 
     if resp.status_code != 200:
         # This means something went wrong.
