@@ -1,6 +1,6 @@
 iso8601utils==0.1.2
 jsontree==0.4.3
-requests==2.14.2
+requests==2.20.0
 sumologic_sdk==0.1.7
 pytz==2013d
 boto3==1.4.7
