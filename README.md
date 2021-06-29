@@ -1,10 +1,13 @@
+> The Performance Platform was retired in March 2021. This repo is no longer actively maintained by the GOV.UK Pay team.
+
 # pay-performance-platform
-The GOV.UK Pay performance platform metric publisher
+The GOV.UK Pay performance platform metric publisher.
+
 
 ## What is it?
 
 [pay-performance-platform](https://github.com/alphagov/pay-performance-platform) is
-a Python script which populates GOV.UK Pay's public [performance dashboard](https://www.gov.uk/performance/govuk-pay).
+a Python 2.7 script which populates GOV.UK Pay's public [performance dashboard](https://www.gov.uk/performance/govuk-pay).
 
 The script can be run independently with
 
